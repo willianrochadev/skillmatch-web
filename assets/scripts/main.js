@@ -6,14 +6,7 @@ import {
   gerarRecomendacao,
 } from "./motor.js";
 import { carregarVagas } from "./dados.js";
-
-// O candidato continuará temporário até o formulário de perfil ser implementado.
-const candidatoTeste = {
-  nome: "Willian",
-  area: "Front-End",
-  habilidades: ["JavaScript", "HTML"],
-  experienciaMeses: 3,
-};
+import { configurarFormulario } from "./ui.js";
 
 const contarAnalise = criarContadorAnalises();
 
@@ -33,15 +26,19 @@ async function iniciarSistema() {
   // Os objetos do JSON viram instâncias da classe VagaFrontEnd.
   const vagas = criarVagas(dadosVagas);
 
-  // Depois o motor compara o candidato com cada vaga criada.
-  const resultados = analisarVagas(candidatoTeste, vagas);
-  const melhorVaga = encontrarMelhorVaga(resultados);
-  const recomendacao = gerarRecomendacao(resultados);
-  const totalAnalises = contarAnalise();
+  configurarFormulario((candidato) => {
+    // O callback recebe o perfil validado pela interface e inicia a análise.
+    const resultados = analisarVagas(candidato, vagas);
+    const melhorVaga = encontrarMelhorVaga(resultados);
+    const recomendacao = gerarRecomendacao(resultados);
+    const totalAnalises = contarAnalise();
 
-  console.log("[Main] Melhor vaga:", melhorVaga);
-  console.log("[Main] Recomendação:", recomendacao);
-  console.log("[Main] Total de análises na sessão:", totalAnalises);
+    console.log("[Main] Melhor vaga:", melhorVaga);
+    console.log("[Main] Recomendação:", recomendacao);
+    console.log("[Main] Total de análises na sessão:", totalAnalises);
+  });
+
+  console.log("[Main] Formulário pronto para análise.");
 }
 
 iniciarSistema();
