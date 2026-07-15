@@ -1,1 +1,92 @@
-[]
+[
+  {
+    "id": 1,
+    "empresa": "TechStart",
+    "cargo": "Desenvolvedor Front-End Júnior",
+    "requisitos": ["HTML", "CSS", "JavaScript", "GitHub"],
+    "salario": 3000,
+    "modalidade": "Remoto",
+    "nivel": "Júnior"
+  },
+  {
+    "id": 2,
+    "empresa": "CodeLab",
+    "cargo": "Estágio em Desenvolvimento Web",
+    "requisitos": ["HTML", "CSS", "Lógica de Programação"],
+    "salario": 1800,
+    "modalidade": "Híbrido",
+    "nivel": "Estágio"
+  },
+  {
+    "id": 3,
+    "empresa": "WebSolutions",
+    "cargo": "Programador JavaScript Júnior",
+    "requisitos": ["JavaScript", "DOM", "GitHub", "Fetch"],
+    "salario": 3400,
+    "modalidade": "Presencial",
+    "nivel": "Júnior"
+  },
+  {
+    "id": 4,
+    "empresa": "InterfacePro",
+    "cargo": "Desenvolvedor de Interfaces Júnior",
+    "requisitos": ["HTML", "CSS", "Flexbox", "Responsividade"],
+    "salario": 3200,
+    "modalidade": "Remoto",
+    "nivel": "Júnior"
+  },
+  {
+    "id": 5,
+    "empresa": "AcessoDigital",
+    "cargo": "Desenvolvedor Web Júnior",
+    "requisitos": ["HTML", "CSS", "Acessibilidade", "SEO"],
+    "salario": 3500,
+    "modalidade": "Híbrido",
+    "nivel": "Júnior"
+  },
+  {
+    "id": 6,
+    "empresa": "DevConnect",
+    "cargo": "Desenvolvedor JavaScript Júnior",
+    "requisitos": ["JavaScript", "Arrays", "Objetos", "Funções"],
+    "salario": 3600,
+    "modalidade": "Remoto",
+    "nivel": "Júnior"
+  },
+  {
+    "id": 7,
+    "empresa": "FrontNow",
+    "cargo": "Desenvolvedor Front-End Júnior",
+    "requisitos": ["JavaScript", "Async/Await", "Fetch", "APIs"],
+    "salario": 3800,
+    "modalidade": "Híbrido",
+    "nivel": "Júnior"
+  },
+  {
+    "id": 8,
+    "empresa": "TalentWeb",
+    "cargo": "Estágio em Front-End",
+    "requisitos": ["HTML", "JavaScript", "GitHub", "Kanban"],
+    "salario": 2000,
+    "modalidade": "Presencial",
+    "nivel": "Estágio"
+  },
+  {
+    "id": 9,
+    "empresa": "PixelTech",
+    "cargo": "Desenvolvedor de Layouts Júnior",
+    "requisitos": ["CSS", "Flexbox", "Responsividade", "DOM"],
+    "salario": 3100,
+    "modalidade": "Remoto",
+    "nivel": "Júnior"
+  },
+  {
+    "id": 10,
+    "empresa": "StartCode",
+    "cargo": "Estágio em Desenvolvimento Front-End",
+    "requisitos": ["HTML", "CSS", "JavaScript", "localStorage"],
+    "salario": 1900,
+    "modalidade": "Híbrido",
+    "nivel": "Estágio"
+  }
+]
