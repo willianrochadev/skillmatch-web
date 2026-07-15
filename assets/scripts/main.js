@@ -5,8 +5,9 @@ import {
   encontrarMelhorVaga,
   gerarRecomendacao,
 } from "./motor.js";
+import { carregarVagas } from "./dados.js";
 
-// Estes dados são temporários e permitem testar o motor antes do formulário e do fetch.
+// O candidato continuará temporário até o formulário de perfil ser implementado.
 const candidatoTeste = {
   nome: "Willian",
   area: "Front-End",
@@ -14,41 +15,23 @@ const candidatoTeste = {
   experienciaMeses: 3,
 };
 
-const dadosVagasTeste = [
-  {
-    id: 1,
-    empresa: "TechStart",
-    cargo: "Desenvolvedor Front-End Júnior",
-    requisitos: ["JavaScript", "HTML", "GitHub"],
-    salario: 2800,
-    modalidade: "Remoto",
-    nivel: "Júnior",
-  },
-  {
-    id: 2,
-    empresa: "CodeLab",
-    cargo: "Estágio Front-End",
-    requisitos: ["JavaScript", "HTML"],
-    salario: 1800,
-    modalidade: "Híbrido",
-    nivel: "Estágio",
-  },
-  {
-    id: 3,
-    empresa: "WebSolutions",
-    cargo: "Programador Web Júnior",
-    requisitos: ["CSS", "React", "GitHub"],
-    salario: 3000,
-    modalidade: "Presencial",
-    nivel: "Júnior",
-  },
-];
-
 const contarAnalise = criarContadorAnalises();
 
-function testarMotor() {
-  // Primeiro os objetos simples viram instâncias da classe VagaFrontEnd.
-  const vagas = criarVagas(dadosVagasTeste);
+async function iniciarSistema() {
+  const dadosVagas = await carregarVagas();
+
+  if (dadosVagas === null) {
+    console.error("[Main] A análise não pôde ser iniciada.");
+    return;
+  }
+
+  if (dadosVagas.length === 0) {
+    console.log("[Main] Nada encontrado.");
+    return;
+  }
+
+  // Os objetos do JSON viram instâncias da classe VagaFrontEnd.
+  const vagas = criarVagas(dadosVagas);
 
   // Depois o motor compara o candidato com cada vaga criada.
   const resultados = analisarVagas(candidatoTeste, vagas);
@@ -61,4 +44,4 @@ function testarMotor() {
   console.log("[Main] Total de análises na sessão:", totalAnalises);
 }
 
-testarMotor();
+iniciarSistema();
