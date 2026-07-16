@@ -73,6 +73,73 @@ function exibirErro(erro) {
   erro.campo.focus();
 }
 
+function criarListaHabilidades(titulo, habilidades) {
+  const conteudo = document.createElement("div");
+  const subtitulo = document.createElement("h4");
+  const lista = document.createElement("ul");
+
+  subtitulo.textContent = titulo;
+
+  if (habilidades.length === 0) {
+    const item = document.createElement("li");
+    item.textContent = "Nenhuma";
+    lista.appendChild(item);
+  } else {
+    habilidades.forEach((habilidade) => {
+      const item = document.createElement("li");
+      item.textContent = habilidade;
+      lista.appendChild(item);
+    });
+  }
+
+  conteudo.appendChild(subtitulo);
+  conteudo.appendChild(lista);
+
+  return conteudo;
+}
+
+export function criarCardVaga(resultado) {
+  const card = document.createElement("article");
+  const titulo = document.createElement("h3");
+  const empresa = document.createElement("p");
+  const detalhes = document.createElement("p");
+  const compatibilidade = document.createElement("p");
+
+  card.classList.add("card-vaga");
+
+  if (resultado.classificacao === "Alta compatibilidade") {
+    card.classList.add("compatibilidade-alta");
+  } else if (resultado.classificacao === "Média compatibilidade") {
+    card.classList.add("compatibilidade-media");
+  } else {
+    card.classList.add("compatibilidade-baixa");
+  }
+
+  titulo.textContent = resultado.cargo;
+  empresa.textContent = resultado.empresa;
+  detalhes.textContent = `${resultado.nivel} | ${resultado.modalidade} | R$ ${resultado.salario}`;
+  compatibilidade.textContent = `${resultado.compatibilidade}% - ${resultado.classificacao}`;
+
+  card.appendChild(titulo);
+  card.appendChild(empresa);
+  card.appendChild(detalhes);
+  card.appendChild(compatibilidade);
+  card.appendChild(
+    criarListaHabilidades(
+      "Habilidades encontradas",
+      resultado.habilidadesEncontradas,
+    ),
+  );
+  card.appendChild(
+    criarListaHabilidades(
+      "Habilidades faltantes",
+      resultado.habilidadesFaltantes,
+    ),
+  );
+
+  return card;
+}
+
 export function configurarFormulario(aoEnviar) {
   formulario.addEventListener("submit", (evento) => {
     evento.preventDefault();
