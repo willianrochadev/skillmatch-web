@@ -4,6 +4,8 @@ const campoArea = document.querySelector("#area");
 const campoHabilidades = document.querySelector("#habilidades");
 const campoExperiencia = document.querySelector("#experiencia-meses");
 const mensagemFormulario = document.querySelector("#mensagem-formulario");
+const estadoResultados = document.querySelector("#estado-resultados");
+const listaVagas = document.querySelector("#lista-vagas");
 
 const camposFormulario = [
   campoNome,
@@ -73,6 +75,7 @@ function exibirErro(erro) {
   erro.campo.focus();
 }
 
+// Cria uma lista HTML a partir do array de habilidades recebido do motor.
 function criarListaHabilidades(titulo, habilidades) {
   const conteudo = document.createElement("div");
   const subtitulo = document.createElement("h4");
@@ -98,6 +101,7 @@ function criarListaHabilidades(titulo, habilidades) {
   return conteudo;
 }
 
+// Cria o elemento que representa uma vaga e devolve o card pronto.
 export function criarCardVaga(resultado) {
   const card = document.createElement("article");
   const titulo = document.createElement("h3");
@@ -107,6 +111,7 @@ export function criarCardVaga(resultado) {
 
   card.classList.add("card-vaga");
 
+  // O CSS usará esta classe para diferenciar o nível de compatibilidade.
   if (resultado.classificacao === "Alta compatibilidade") {
     card.classList.add("compatibilidade-alta");
   } else if (resultado.classificacao === "Média compatibilidade") {
@@ -140,7 +145,26 @@ export function criarCardVaga(resultado) {
   return card;
 }
 
+export function renderizarVagas(resultados) {
+  // Limpa os cards anteriores antes de mostrar uma nova análise.
+  listaVagas.textContent = "";
+
+  if (resultados.length === 0) {
+    estadoResultados.textContent = "Nada encontrado.";
+    return;
+  }
+
+  // Percorre os resultados e adiciona um novo card para cada vaga.
+  resultados.forEach((resultado) => {
+    const card = criarCardVaga(resultado);
+    listaVagas.appendChild(card);
+  });
+
+  estadoResultados.textContent = `${resultados.length} vagas analisadas.`;
+}
+
 export function configurarFormulario(aoEnviar) {
+  // O envio do formulário é tratado pelo JavaScript sem recarregar a página.
   formulario.addEventListener("submit", (evento) => {
     evento.preventDefault();
     limparErros();
@@ -154,6 +178,8 @@ export function configurarFormulario(aoEnviar) {
     }
 
     console.log("[UI] Candidato válido:", candidato);
+
+    // O callback recebe o candidato somente depois da validação.
     aoEnviar(candidato);
   });
 }

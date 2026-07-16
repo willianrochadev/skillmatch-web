@@ -6,7 +6,7 @@ import {
   gerarRecomendacao,
 } from "./motor.js";
 import { carregarVagas } from "./dados.js";
-import { configurarFormulario } from "./ui.js";
+import { configurarFormulario, renderizarVagas } from "./ui.js";
 
 const contarAnalise = criarContadorAnalises();
 
@@ -32,6 +32,8 @@ async function iniciarSistema() {
     const melhorVaga = encontrarMelhorVaga(resultados);
     const recomendacao = gerarRecomendacao(resultados);
     const totalAnalises = contarAnalise();
+
+    renderizarVagas(resultados);
 
     console.log("[Main] Melhor vaga:", melhorVaga);
     console.log("[Main] Recomendação:", recomendacao);
