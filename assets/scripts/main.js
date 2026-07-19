@@ -7,6 +7,7 @@ import {
 } from "./motor.js";
 import { carregarVagas } from "./dados.js";
 import {
+  atualizarEstadoResultados,
   configurarFormulario,
   renderizarResumo,
   renderizarVagas,
@@ -15,14 +16,20 @@ import {
 const contarAnalise = criarContadorAnalises();
 
 async function iniciarSistema() {
+  atualizarEstadoResultados("Carregando vagas...");
+
   const dadosVagas = await carregarVagas();
 
   if (dadosVagas === null) {
+    atualizarEstadoResultados(
+      "Não foi possível carregar as vagas. Tente novamente mais tarde.",
+    );
     console.error("[Main] A análise não pôde ser iniciada.");
     return;
   }
 
   if (dadosVagas.length === 0) {
+    atualizarEstadoResultados("Nada encontrado.");
     console.log("[Main] Nada encontrado.");
     return;
   }
@@ -45,6 +52,7 @@ async function iniciarSistema() {
     console.log("[Main] Total de análises na sessão:", totalAnalises);
   });
 
+  atualizarEstadoResultados("Vagas carregadas. Preencha seu perfil.");
   console.log("[Main] Formulário pronto para análise.");
 }
 

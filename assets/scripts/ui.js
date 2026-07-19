@@ -17,6 +17,11 @@ const camposFormulario = [
   campoExperiencia,
 ];
 
+export function atualizarEstadoResultados(mensagem) {
+  // O aria-live do elemento anuncia esta mensagem para leitores de tela.
+  estadoResultados.textContent = mensagem;
+}
+
 function obterDadosFormulario() {
   // Transforma o texto separado por vírgulas em uma lista de habilidades.
   const habilidades = campoHabilidades.value
@@ -153,7 +158,7 @@ export function renderizarVagas(resultados) {
   listaVagas.textContent = "";
 
   if (resultados.length === 0) {
-    estadoResultados.textContent = "Nada encontrado.";
+    atualizarEstadoResultados("Nada encontrado.");
     return;
   }
 
@@ -163,7 +168,7 @@ export function renderizarVagas(resultados) {
     listaVagas.appendChild(card);
   });
 
-  estadoResultados.textContent = `${resultados.length} vagas analisadas.`;
+  atualizarEstadoResultados(`${resultados.length} vagas analisadas.`);
 }
 
 export function renderizarResumo(melhorVaga, recomendacao) {
