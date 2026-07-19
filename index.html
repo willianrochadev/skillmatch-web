@@ -22,6 +22,7 @@
 
       <nav aria-label="Navegação principal">
         <a href="#perfil">Preencher perfil</a>
+        <a href="#resultados">Ver resultados</a>
       </nav>
     </header>
 
@@ -81,6 +82,28 @@
 
           <button type="submit">Analisar compatibilidade</button>
         </form>
+      </section>
+
+      <section id="resultados" aria-labelledby="resultados-titulo">
+        <h2 id="resultados-titulo">Resultados da análise</h2>
+
+        <p id="estado-resultados" role="status" aria-live="polite">
+          Preencha o perfil para analisar as vagas.
+        </p>
+
+        <div id="resumo-analise" hidden>
+          <article aria-labelledby="melhor-vaga-titulo">
+            <h3 id="melhor-vaga-titulo">Melhor vaga</h3>
+            <div id="melhor-vaga"></div>
+          </article>
+
+          <article aria-labelledby="recomendacao-titulo">
+            <h3 id="recomendacao-titulo">Recomendação de estudo</h3>
+            <p id="recomendacao-estudo"></p>
+          </article>
+        </div>
+
+        <div id="lista-vagas" aria-label="Vagas analisadas"></div>
       </section>
     </main>
 

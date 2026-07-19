@@ -8,6 +8,11 @@ function exibirDebug(etapa, valor) {
   }
 }
 
+function normalizarHabilidade(habilidade) {
+  // Padroniza o texto para que letras maiúsculas e minúsculas sejam equivalentes.
+  return habilidade.trim().toLowerCase();
+}
+
 export class Vaga {
   constructor(id, empresa, cargo, requisitos, salario, modalidade) {
     this.id = id;
@@ -23,14 +28,18 @@ export class Vaga {
   }
 
   analisarCompatibilidade(candidato) {
+    const habilidadesCandidato = candidato.habilidades.map((habilidade) => {
+      return normalizarHabilidade(habilidade);
+    });
+
     // Mantém apenas os requisitos que também aparecem nas habilidades do candidato.
     const habilidadesEncontradas = this.requisitos.filter((requisito) => {
-      return candidato.habilidades.includes(requisito);
+      return habilidadesCandidato.includes(normalizarHabilidade(requisito));
     });
 
     // O sinal de negação (!) inverte o resultado e encontra o que ainda falta estudar.
     const habilidadesFaltantes = this.requisitos.filter((requisito) => {
-      return !candidato.habilidades.includes(requisito);
+      return !habilidadesCandidato.includes(normalizarHabilidade(requisito));
     });
 
     const compatibilidade =
