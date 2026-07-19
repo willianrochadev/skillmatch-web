@@ -5,6 +5,9 @@ const campoHabilidades = document.querySelector("#habilidades");
 const campoExperiencia = document.querySelector("#experiencia-meses");
 const mensagemFormulario = document.querySelector("#mensagem-formulario");
 const estadoResultados = document.querySelector("#estado-resultados");
+const resumoAnalise = document.querySelector("#resumo-analise");
+const melhorVagaElemento = document.querySelector("#melhor-vaga");
+const recomendacaoEstudo = document.querySelector("#recomendacao-estudo");
 const listaVagas = document.querySelector("#lista-vagas");
 
 const camposFormulario = [
@@ -161,6 +164,32 @@ export function renderizarVagas(resultados) {
   });
 
   estadoResultados.textContent = `${resultados.length} vagas analisadas.`;
+}
+
+export function renderizarResumo(melhorVaga, recomendacao) {
+  // Limpa o resumo anterior para evitar informações repetidas em uma nova análise.
+  melhorVagaElemento.textContent = "";
+
+  if (melhorVaga === null) {
+    resumoAnalise.hidden = true;
+    return;
+  }
+
+  const identificacao = document.createElement("p");
+  const compatibilidade = document.createElement("p");
+  const classificacao = document.createElement("p");
+
+  identificacao.textContent = `${melhorVaga.cargo} - ${melhorVaga.empresa}`;
+  compatibilidade.textContent = `Compatibilidade: ${melhorVaga.compatibilidade}%`;
+  classificacao.textContent = melhorVaga.classificacao;
+
+  melhorVagaElemento.appendChild(identificacao);
+  melhorVagaElemento.appendChild(compatibilidade);
+  melhorVagaElemento.appendChild(classificacao);
+  recomendacaoEstudo.textContent = recomendacao;
+
+  // O resumo começa oculto no HTML e aparece somente depois da análise.
+  resumoAnalise.hidden = false;
 }
 
 export function configurarFormulario(aoEnviar) {
