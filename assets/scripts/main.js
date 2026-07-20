@@ -5,7 +5,7 @@ import {
   encontrarMelhorVaga,
   gerarRecomendacao,
 } from "./motor.js";
-import { carregarVagas } from "./dados.js";
+import { carregarVagas, salvarPerfil } from "./dados.js";
 import {
   atualizarEstadoResultados,
   configurarFormulario,
@@ -39,6 +39,8 @@ async function iniciarSistema() {
 
   configurarFormulario((candidato) => {
     // O callback recebe o perfil validado pela interface e inicia a análise.
+    salvarPerfil(candidato);
+
     const resultados = analisarVagas(candidato, vagas);
     const melhorVaga = encontrarMelhorVaga(resultados);
     const recomendacao = gerarRecomendacao(resultados);
