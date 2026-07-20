@@ -9,6 +9,21 @@ export function salvarPerfil(perfil) {
   console.log("[Dados] Perfil salvo no navegador.");
 }
 
+export function carregarPerfil() {
+  const perfilEmTexto = localStorage.getItem(CHAVE_PERFIL);
+
+  // Na primeira visita ainda não existe um perfil salvo no navegador.
+  if (perfilEmTexto === null) {
+    console.log("[Dados] Nenhum perfil salvo.");
+    return null;
+  }
+
+  const perfil = JSON.parse(perfilEmTexto);
+  console.log("[Dados] Perfil recuperado do navegador.");
+
+  return perfil;
+}
+
 export async function carregarVagas() {
   console.log("[Dados] Carregando vagas...");
 
