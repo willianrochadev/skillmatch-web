@@ -17,6 +17,33 @@ import {
 const contarAnalise = criarContadorAnalises();
 
 async function iniciarSistema() {
+  let vagas = [];
+
+  // O evento é configurado antes do fetch para sempre impedir o envio padrão.
+  configurarFormulario((candidato) => {
+    if (vagas.length === 0) {
+      atualizarEstadoResultados(
+        "As vagas ainda não estão disponíveis para análise.",
+      );
+      return;
+    }
+
+    // O callback recebe o perfil validado pela interface e inicia a análise.
+    salvarPerfil(candidato);
+
+    const resultados = analisarVagas(candidato, vagas);
+    const melhorVaga = encontrarMelhorVaga(resultados);
+    const recomendacao = gerarRecomendacao(resultados);
+    const totalAnalises = contarAnalise();
+
+    renderizarVagas(resultados);
+    renderizarResumo(melhorVaga, recomendacao);
+
+    console.log("[Main] Melhor vaga:", melhorVaga);
+    console.log("[Main] Recomendação:", recomendacao);
+    console.log("[Main] Total de análises na sessão:", totalAnalises);
+  });
+
   const perfilSalvo = carregarPerfil();
   preencherFormulario(perfilSalvo);
 
@@ -39,24 +66,7 @@ async function iniciarSistema() {
   }
 
   // Os objetos do JSON viram instâncias da classe VagaFrontEnd.
-  const vagas = criarVagas(dadosVagas);
-
-  configurarFormulario((candidato) => {
-    // O callback recebe o perfil validado pela interface e inicia a análise.
-    salvarPerfil(candidato);
-
-    const resultados = analisarVagas(candidato, vagas);
-    const melhorVaga = encontrarMelhorVaga(resultados);
-    const recomendacao = gerarRecomendacao(resultados);
-    const totalAnalises = contarAnalise();
-
-    renderizarVagas(resultados);
-    renderizarResumo(melhorVaga, recomendacao);
-
-    console.log("[Main] Melhor vaga:", melhorVaga);
-    console.log("[Main] Recomendação:", recomendacao);
-    console.log("[Main] Total de análises na sessão:", totalAnalises);
-  });
+  vagas = criarVagas(dadosVagas);
 
   atualizarEstadoResultados("Vagas carregadas. Preencha seu perfil.");
   console.log("[Main] Formulário pronto para análise.");
