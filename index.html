@@ -8,6 +8,7 @@
       content="Compare suas habilidades com vagas de Front-End e descubra o que estudar."
     />
     <title>SkillMatch Web | Compatibilidade com vagas</title>
+    <link rel="icon" href="./assets/img/logo.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./assets/styles/index.style.css" />
   </head>
   <body>
@@ -19,12 +20,139 @@
         height="48"
       />
       <h1>SkillMatch Web</h1>
+
+      <nav aria-label="Navegação principal">
+        <a href="#perfil">Preencher perfil</a>
+        <a href="#resultados">Ver resultados</a>
+      </nav>
     </header>
 
     <main>
       <section aria-labelledby="apresentacao-titulo">
         <h2 id="apresentacao-titulo">Encontre vagas compatíveis com você</h2>
         <p>Preencha seu perfil para comparar suas habilidades com as vagas.</p>
+
+        <div class="habilidades-disponiveis">
+          <h3 id="habilidades-disponiveis-titulo">
+            Habilidades presentes nas vagas
+          </h3>
+          <p>
+            O catálogo reúne vagas de Front-End com as habilidades abaixo. No
+            formulário, informe apenas aquelas que você possui.
+          </p>
+
+          <div class="grupos-habilidades">
+            <div class="grupo-habilidades">
+              <h4>JavaScript e lógica</h4>
+              <ul>
+                <li>JavaScript</li>
+                <li>Lógica de Programação</li>
+                <li>Arrays</li>
+                <li>Objetos</li>
+                <li>Funções</li>
+                <li>DOM</li>
+              </ul>
+            </div>
+
+            <div class="grupo-habilidades">
+              <h4>Interface</h4>
+              <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Flexbox</li>
+                <li>Responsividade</li>
+                <li>Acessibilidade</li>
+                <li>SEO</li>
+              </ul>
+            </div>
+
+            <div class="grupo-habilidades">
+              <h4>Ferramentas e integração</h4>
+              <ul>
+                <li>GitHub</li>
+                <li>Fetch</li>
+                <li>Async/Await</li>
+                <li>APIs</li>
+                <li>Kanban</li>
+                <li>localStorage</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="perfil" aria-labelledby="perfil-titulo">
+        <h2 id="perfil-titulo">Perfil do candidato</h2>
+
+        <form id="formulario-perfil" novalidate>
+          <div>
+            <label for="nome">Nome</label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="area">Área de atuação</label>
+            <input type="text" id="area" name="area" required />
+          </div>
+
+          <div>
+            <label for="habilidades">Habilidades</label>
+            <input
+              type="text"
+              id="habilidades"
+              name="habilidades"
+              aria-describedby="habilidades-ajuda"
+              required
+            />
+            <small id="habilidades-ajuda">
+              Separe as habilidades por vírgula. Exemplo: HTML, CSS, JavaScript.
+            </small>
+          </div>
+
+          <div>
+            <label for="experiencia-meses">Experiência em meses</label>
+            <input
+              type="number"
+              id="experiencia-meses"
+              name="experienciaMeses"
+              min="0"
+              step="1"
+              required
+            />
+          </div>
+
+          <p id="mensagem-formulario" role="alert" aria-live="assertive"></p>
+
+          <button type="submit">Analisar compatibilidade</button>
+        </form>
+      </section>
+
+      <section id="resultados" aria-labelledby="resultados-titulo">
+        <h2 id="resultados-titulo">Resultados da análise</h2>
+
+        <p id="estado-resultados" role="status" aria-live="polite">
+          Preencha o perfil para analisar as vagas.
+        </p>
+
+        <div id="resumo-analise" hidden>
+          <article aria-labelledby="melhor-vaga-titulo">
+            <h3 id="melhor-vaga-titulo">Melhor vaga</h3>
+            <div id="melhor-vaga"></div>
+          </article>
+
+          <article aria-labelledby="recomendacao-titulo">
+            <h3 id="recomendacao-titulo">Recomendação de estudo</h3>
+            <p id="recomendacao-estudo"></p>
+          </article>
+        </div>
+
+        <div id="lista-vagas"></div>
       </section>
     </main>
 
