@@ -1,6 +1,6 @@
 // Ative durante o desenvolvimento para acompanhar os resultados no console.
 // Antes da entrega final, altere o valor para false.
-const MODO_DEBUG = true;
+const MODO_DEBUG = false;
 
 function exibirDebug(etapa, valor) {
   if (MODO_DEBUG) {
