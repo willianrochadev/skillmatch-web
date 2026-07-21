@@ -5,8 +5,219 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  line-height: 1.5;
+  color: #263238;
+  background-color: #f2f5f6;
 }
 
 img {
   max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Cabeçalho e navegação */
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  color: #ffffff;
+  background-color: #245c73;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+}
+
+nav a {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Conteúdo principal */
+main {
+  width: 100%;
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+main > section {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.08);
+}
+
+h2,
+h3,
+h4 {
+  color: #245c73;
+}
+
+h2,
+h3 {
+  margin-top: 0;
+}
+
+/* Habilidades presentes nas vagas */
+.habilidades-disponiveis {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #edf5f7;
+  border-left: 0.25rem solid #245c73;
+  border-radius: 0.25rem;
+}
+
+.grupo-habilidades {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: #ffffff;
+  border-radius: 0.25rem;
+}
+
+.grupo-habilidades h4 {
+  margin: 0 0 0.5rem;
+}
+
+.grupo-habilidades ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+/* Formulário */
+form > div {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  padding: 0.75rem;
+  font: inherit;
+  color: #263238;
+  background-color: #ffffff;
+  border: 0.0625rem solid #82949c;
+  border-radius: 0.25rem;
+}
+
+small {
+  display: block;
+  margin-top: 0.25rem;
+  color: #52656d;
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font: inherit;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  background-color: #245c73;
+  border: 0;
+  border-radius: 0.25rem;
+}
+
+button:hover {
+  background-color: #183f50;
+}
+
+a:focus-visible,
+input:focus-visible,
+button:focus-visible {
+  outline: 0.1875rem solid #f2b544;
+  outline-offset: 0.1875rem;
+}
+
+.campo-invalido {
+  background-color: #fff5f5;
+  border-color: #b42318;
+}
+
+#mensagem-formulario {
+  min-height: 1.5rem;
+  color: #b42318;
+  font-weight: 700;
+}
+
+/* Resultados da análise */
+#estado-resultados {
+  padding: 0.75rem;
+  background-color: #edf5f7;
+  border-left: 0.25rem solid #245c73;
+}
+
+#resumo-analise article {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #f7fafb;
+  border: 0.0625rem solid #c8d4d9;
+  border-radius: 0.5rem;
+}
+
+.card-vaga {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #ffffff;
+  border: 0.0625rem solid #c8d4d9;
+  border-top: 0.375rem solid #82949c;
+  border-radius: 0.5rem;
+}
+
+.card-vaga h3 {
+  margin-bottom: 0.25rem;
+}
+
+.card-vaga h4 {
+  margin-bottom: 0.25rem;
+}
+
+.card-vaga ul {
+  padding-left: 1.25rem;
+}
+
+.card-vaga.compatibilidade-alta {
+  border-top-color: #2f855a;
+}
+
+.card-vaga.compatibilidade-media {
+  border-top-color: #b7791f;
+}
+
+.card-vaga.compatibilidade-baixa {
+  border-top-color: #b42318;
+}
+
+/* Rodapé */
+footer {
+  padding: 1rem;
+  color: #ffffff;
+  text-align: center;
+  background-color: #183f50;
+}
+
+footer p {
+  margin: 0;
 }
