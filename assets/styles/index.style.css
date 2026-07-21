@@ -221,3 +221,70 @@ footer {
 footer p {
   margin: 0;
 }
+
+/* Tablets e telas médias */
+@media (min-width: 48rem) {
+  header {
+    padding: 1rem 2rem;
+  }
+
+  nav {
+    width: auto;
+    margin-left: auto;
+  }
+
+  main {
+    padding: 1.5rem;
+  }
+
+  main > section {
+    padding: 1.5rem;
+  }
+
+  .grupos-habilidades {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .grupo-habilidades {
+    flex: 1 1 12rem;
+    margin-top: 0;
+  }
+
+  form {
+    max-width: 40rem;
+  }
+
+  button {
+    width: auto;
+  }
+
+  #resumo-analise:not([hidden]) {
+    display: flex;
+    gap: 1rem;
+  }
+
+  #resumo-analise article {
+    flex: 1;
+    margin-bottom: 0;
+  }
+
+  #lista-vagas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .card-vaga {
+    flex: 0 1 calc(50% - 0.5rem);
+    margin-bottom: 0;
+  }
+}
+
+/* Desktops e telas largas */
+@media (min-width: 70rem) {
+  .card-vaga {
+    flex-basis: calc(33.333% - 0.667rem);
+  }
+}
