@@ -1,4 +1,28 @@
 const CAMINHO_VAGAS = "./assets/dados/vagas.json";
+const CHAVE_PERFIL = "skillmatch-perfil";
+
+export function salvarPerfil(perfil) {
+  // O localStorage armazena textos, por isso o objeto é convertido para JSON.
+  const perfilEmTexto = JSON.stringify(perfil);
+  localStorage.setItem(CHAVE_PERFIL, perfilEmTexto);
+
+  console.log("[Dados] Perfil salvo no navegador.");
+}
+
+export function carregarPerfil() {
+  const perfilEmTexto = localStorage.getItem(CHAVE_PERFIL);
+
+  // Na primeira visita ainda não existe um perfil salvo no navegador.
+  if (perfilEmTexto === null) {
+    console.log("[Dados] Nenhum perfil salvo.");
+    return null;
+  }
+
+  const perfil = JSON.parse(perfilEmTexto);
+  console.log("[Dados] Perfil recuperado do navegador.");
+
+  return perfil;
+}
 
 export async function carregarVagas() {
   console.log("[Dados] Carregando vagas...");

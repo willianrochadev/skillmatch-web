@@ -22,6 +22,17 @@ export function atualizarEstadoResultados(mensagem) {
   estadoResultados.textContent = mensagem;
 }
 
+export function preencherFormulario(perfil) {
+  if (perfil === null) {
+    return;
+  }
+
+  campoNome.value = perfil.nome;
+  campoArea.value = perfil.area;
+  campoHabilidades.value = perfil.habilidades.join(", ");
+  campoExperiencia.value = perfil.experienciaMeses;
+}
+
 function obterDadosFormulario() {
   // Transforma o texto separado por vírgulas em uma lista de habilidades.
   const habilidades = campoHabilidades.value
