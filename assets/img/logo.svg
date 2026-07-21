@@ -2,19 +2,48 @@
   xmlns="http://www.w3.org/2000/svg"
   width="48"
   height="48"
-  viewBox="0 0 48 48"
+  viewBox="0 0 64 64"
   role="img"
   aria-labelledby="logo-titulo"
 >
-  <title id="logo-titulo">SkillMatch</title>
-  <circle cx="24" cy="24" r="22" fill="#245c73" />
+  <title id="logo-titulo">SkillMatch com selo de compatibilidade</title>
+
+  <rect
+    x="3"
+    y="3"
+    width="56"
+    height="56"
+    rx="14"
+    fill="#245c73"
+    stroke="#183f50"
+    stroke-width="2"
+  />
+
   <text
-    x="24"
-    y="30"
+    x="29"
+    y="38"
     fill="#ffffff"
     font-family="Arial, sans-serif"
-    font-size="17"
+    font-size="22"
     font-weight="700"
     text-anchor="middle"
   >SM</text>
+
+  <circle
+    cx="51"
+    cy="51"
+    r="11"
+    fill="#2f855a"
+    stroke="#ffffff"
+    stroke-width="3"
+  />
+
+  <path
+    d="M45.5 51 L49.5 55 L56.5 47"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
 </svg>
